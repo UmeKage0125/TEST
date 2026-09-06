@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="15 題測出你的二次元人格屬性：高冷、天然系、傲嬌、腹黑、黏人、病嬌、社恐。"
+  />
+
+  <title>你的屬性是？｜二次元人格測驗</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+</head>
+
+<body>
+
+  <main class="app">
+
+    <!-- =========================
+         首頁
+    ========================== -->
+
+    <section
+      id="home-screen"
+      class="screen active"
+    >
+
+      <div class="hero-card">
+
+        <p class="eyebrow">
+          二次元人格屬性測驗
+        </p>
+
+        <h1>
+          你的屬性是？
+        </h1>
+
+        <p class="subtitle">
+          15 題測出你最藏不住的二次元屬性。<br>
+          你以為自己是高冷？測完可能只剩社恐。
+        </p>
+
+        <div class="attribute-preview">
+          <span>高冷</span>
+          <span>天然系</span>
+          <span>傲嬌</span>
+          <span>腹黑</span>
+          <span>黏人</span>
+          <span>病嬌</span>
+          <span>社恐</span>
+        </div>
+
+        <div class="home-feature">
+          <div>
+            <strong>15</strong>
+            <span>題情境題</span>
+          </div>
+
+          <div>
+            <strong>7</strong>
+            <span>種人格屬性</span>
+          </div>
+
+          <div>
+            <strong>1</strong>
+            <span>張專屬結果卡</span>
+          </div>
+        </div>
+
+        <button
+          id="start-btn"
+          class="primary-btn"
+          type="button"
+        >
+          開始測驗
+        </button>
+
+        <p class="small-text">
+          約 2～3 分鐘｜答案沒有對錯
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         測驗頁
+    ========================== -->
+
+    <section
+      id="quiz-screen"
+      class="screen"
+    >
+
+      <div class="quiz-card">
+
+        <div class="quiz-top">
+
+          <span id="question-number">
+            01 / 15
+          </span>
+
+          <button
+            id="restart-btn"
+            class="text-btn"
+            type="button"
+          >
+            重新開始
+          </button>
+
+        </div>
+
+        <div class="progress-track">
+          <div
+            id="progress-bar"
+            class="progress-bar"
+          ></div>
+        </div>
+
+        <p class="question-label">
+          選最接近你的答案
+        </p>
+
+        <h2 id="question-text">
+          題目載入中……
+        </h2>
+
+        <div
+          id="answers-container"
+          class="answers-container"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         結果頁
+    ========================== -->
+
+    <section
+      id="result-screen"
+      class="screen"
+    >
+
+      <div class="result-card">
+
+        <p class="eyebrow">
+          測驗結果
+        </p>
+
+        <p class="result-label">
+          你的主屬性是
+        </p>
+
+        <h2 id="main-result">
+          傲嬌
+        </h2>
+
+        <p
+          id="main-percent"
+          class="main-percent"
+        >
+          傲嬌純度 87%
+        </p>
+
+        <p
+          id="result-hook"
+          class="result-hook"
+        >
+          嘴上：隨便。心裡：她怎麼還沒回。
+        </p>
+
+        <blockquote
+          id="result-quote"
+          class="result-quote"
+        >
+          「才、才不是特別在意你。」
+        </blockquote>
+
+
+        <!-- 主副屬性 -->
+
+        <div class="secondary-result">
+
+          <div>
+            <span>
+              副屬性
+            </span>
+
+            <strong id="secondary-result">
+              腹黑
+            </strong>
+          </div>
+
+          <div>
+            <span>
+              隱藏屬性
+            </span>
+
+            <strong id="third-result">
+              黏人
+            </strong>
+          </div>
+
+        </div>
+
+
+        <!-- 分析 -->
+
+        <div class="description-box">
+
+          <p id="result-description">
+            結果分析載入中……
+          </p>
+
+        </div>
+
+
+        <!-- =========================
+             七邊形雷達圖
+        ========================== -->
+
+        <div class="radar-section">
+
+          <div class="section-title-row">
+
+            <div>
+              <p class="section-kicker">
+                ATTRIBUTE MAP
+              </p>
+
+              <h3>
+                七屬性雷達圖
+              </h3>
+            </div>
+
+            <span class="radar-badge">
+              7 AXES
+            </span>
+
+          </div>
+
+          <div class="radar-wrap">
+
+            <canvas
+              id="radar-canvas"
+              width="420"
+              height="420"
+              aria-label="七屬性雷達圖"
+            ></canvas>
+
+          </div>
+
+        </div>
+
+
+        <!-- 屬性分布 -->
+
+        <div class="distribution-section">
+
+          <div class="section-title-row">
+
+            <div>
+              <p class="section-kicker">
+                ATTRIBUTE SCORE
+              </p>
+
+              <h3>
+                屬性分布
+              </h3>
+            </div>
+
+          </div>
+
+          <div
+            id="stats-container"
+            class="stats-container"
+          ></div>
+
+        </div>
+
+
+        <!-- =========================
+             分享結果卡
+        ========================== -->
+
+        <div
+          id="share-card"
+          class="share-card"
+        >
+
+          <div class="share-top">
+
+            <div>
+              <p class="share-brand">
+                你的屬性是？
+              </p>
+
+              <p class="share-brand-sub">
+                二次元人格屬性測驗
+              </p>
+            </div>
+
+            <span class="share-mini-badge">
+              RESULT
+            </span>
+
+          </div>
+
+
+          <div class="share-main">
+
+            <p class="share-small">
+              我的主屬性
+            </p>
+
+            <h2 id="share-main-result">
+              傲嬌
+            </h2>
+
+            <p
+              id="share-percent"
+              class="share-percent"
+            >
+              傲嬌純度 87%
+            </p>
+
+            <p
+              id="share-hook"
+              class="share-hook"
+            >
+              嘴上：隨便。心裡：她怎麼還沒回。
+            </p>
+
+          </div>
+
+
+          <p
+            id="share-quote"
+            class="share-quote"
+          >
+            「才、才不是特別在意你。」
+          </p>
+
+
+          <!-- 分享卡七邊形 -->
+
+          <div class="share-radar-wrap">
+
+            <canvas
+              id="share-radar-canvas"
+              width="380"
+              height="380"
+              aria-label="分享卡七屬性雷達圖"
+            ></canvas>
+
+          </div>
+
+
+          <div class="share-sub">
+
+            <div>
+              <span>
+                副屬性
+              </span>
+
+              <strong id="share-second-result">
+                腹黑
+              </strong>
+            </div>
+
+            <div>
+              <span>
+                隱藏屬性
+              </span>
+
+              <strong id="share-third-result">
+                黏人
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div
+            id="share-bars"
+            class="share-bars"
+          ></div>
+
+
+          <div class="share-footer">
+
+            <span>
+              高冷 · 天然 · 傲嬌 · 腹黑 · 黏人 · 病嬌 · 社恐
+            </span>
+
+            <strong>
+              你是哪一種？
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- 按鈕 -->
+
+        <button
+          id="save-image-btn"
+          class="primary-btn"
+          type="button"
+        >
+          生成分享圖片
+        </button>
+
+        <button
+          id="copy-result-btn"
+          class="secondary-btn"
+          type="button"
+        >
+          複製結果文字
+        </button>
+
+        <button
+          id="retry-btn"
+          class="secondary-btn"
+          type="button"
+        >
+          再測一次
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!--
+    將 HTML 結果卡轉成 PNG
+  -->
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+  ></script>
+
+
+  <!-- 題庫 -->
+
+  <script src="data.js"></script>
+
+
+  <!-- 主程式 -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
